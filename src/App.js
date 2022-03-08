@@ -18,10 +18,15 @@ class App extends Component {
     const novoEstado={
       notas:novoArrayDeNotas
     }
-  
-   
-    this.setState(novoEstado)
+    this.setState(novoEstado);
 
+  }
+
+  deletarNota(index){
+    console.log('oi');
+    let arrayNotas = this.state.notas;
+    arrayNotas.splice(index,1);
+    this.setState({notas:arrayNotas});
   }
 
 
@@ -29,7 +34,9 @@ class App extends Component {
     return (
       <section className="conteudo">
         <FormularioCadastro criarNota={this.criarNota.bind(this)}/>
-        <ListaDeNotas notas={this.state.notas}/>
+        <ListaDeNotas 
+        notas={this.state.notas}
+        apagarNota={this.deletarNota.bind(this)}/>
       </section>
     );
   }
