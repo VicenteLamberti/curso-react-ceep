@@ -14,13 +14,10 @@ export default class Categorias{
         });
     }
 
-    desinscrever
     adicionarCategoria(novaCategoria){
-        
         this.categorias.push(novaCategoria);
-        console.log(this.categorias)
-    
-      }
+        this.notificar();
+       }
 
 
 

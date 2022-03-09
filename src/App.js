@@ -56,19 +56,19 @@ class App extends Component {
         // categorias={this.state.categoria} 
         // criarNota={this.criarNota.bind(this)}
                
-        categorias={this.categorias.categorias} 
-        criarNota={this.notas.adicionarNota} />
+        categorias={this.categorias} 
+        criarNota={this.notas.adicionarNota.bind(this.notas)} />
 
         <main className="conteudo-principal">
           <ListaDeCategorias 
           // categorias={this.state.categorias} 
           // adicionarCategoria={this.adicionarCategoria.bind(this)}
-          categorias={this.categorias.categorias} 
-          adicionarCategoria={this.categorias.adicionarCategoria}/>
+          categorias={this.categorias} 
+          adicionarCategoria={this.categorias.adicionarCategoria.bind(this.categorias)}/>
         </main>
         <ListaDeNotas
-          notas={this.notas.notas}
-          apagarNota={this.notas.apagarNota} />
+          notas={this.notas}
+          apagarNota={this.notas.apagarNota.bind(this.notas)} />
       </section>
     );
   }
