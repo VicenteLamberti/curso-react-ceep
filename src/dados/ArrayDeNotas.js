@@ -18,6 +18,11 @@ export default class ArrayDeNotas{
         this._inscritos.push(qualFuncaoVaiObservar)
 
     }
+
+    desinscrever(qualFuncaoVaiPararDeObservar){
+        this._inscritos = this._inscritos.filter(funcao => funcao != qualFuncaoVaiPararDeObservar)
+    }
+    
     notificar(){
         this._inscritos.forEach(funcaoInscrita=> {
             funcaoInscrita(this.notas);
