@@ -4,51 +4,71 @@ import FormularioCadastro from "./components/FormularioCadastro";
 import ListaDeCategorias from "./components/ListaDeCategorias";
 import "./assets/App.css";
 import './assets/index.css';
+import Categorias from "./dados/Categorias";
+import ArrayDeNotas from "./dados/ArrayDeNotas";
 class App extends Component {
 
   constructor() {
     super();
+    this.categorias = new Categorias();
+    this.notas = new ArrayDeNotas();
 
-    this.state = {
-      notas: [],
-      categorias:["Jogos","Música"]
-    };
-  }
-  criarNota(titulo, texto, categoria) {
-    const novaNota = { titulo, texto, categoria};
-    const novoArrayDeNotas = [...this.state.notas, novaNota];
-    const novoEstado = {
-      notas: novoArrayDeNotas
-    }
-    this.setState(novoEstado);
-
+    // this.state = {
+    //   Movi para a classe ArrayDeNotas
+    //   notas: [],
+    //   Movi para a classe Categorias
+    //   categorias:["Jogos","Música"]
+    // };
   }
 
-  deletarNota(index) {
-    console.log('oi');
-    let arrayNotas = this.state.notas;
-    arrayNotas.splice(index, 1);
-    this.setState({ notas: arrayNotas });
-  }
+  // Mudei para a class ArrayDeNotas
+  // criarNota(titulo, texto, categoria) {
+  //   const novaNota = { titulo, texto, categoria};
+  //   const novoArrayDeNotas = [...this.state.notas, novaNota];
+  //   const novoEstado = {
+  //     notas: novoArrayDeNotas
+  //   }
+  //   this.setState(novoEstado);
 
-  adicionarCategoria(nomeCategoria){
-    const novoArrayCategorias = [...this.state.categorias,nomeCategoria];
-    const novoEstado = {...this.state, categorias:novoArrayCategorias};
-    this.setState(novoEstado);
+  // }
 
-  }
+  //  Mudei para a class ArrayDeNotas
+  // deletarNota(index) {
+  //   console.log('oi');
+  //   let arrayNotas = this.state.notas;
+  //   arrayNotas.splice(index, 1);
+  //   this.setState({ notas: arrayNotas });
+  // }
 
+
+
+  // Movi para a classe Categorias
+  // adicionarCategoria(nomeCategoria){
+  //   const novoArrayCategorias = [...this.state.categorias,nomeCategoria];
+  //   const novoEstado = {...this.state, categorias:novoArrayCategorias};
+  //   this.setState(novoEstado);
+  // }
 
   render() {
     return (
       <section className="conteudo">
-        <FormularioCadastro categorias={this.state.categorias} criarNota={this.criarNota.bind(this)} />
+        <FormularioCadastro 
+        // categorias={this.state.categoria} 
+        // criarNota={this.criarNota.bind(this)}
+               
+        categorias={this.categorias.categorias} 
+        criarNota={this.notas.adicionarNota} />
+
         <main className="conteudo-principal">
-          <ListaDeCategorias categorias={this.state.categorias} adicionarCategoria={this.adicionarCategoria.bind(this)}/>
+          <ListaDeCategorias 
+          // categorias={this.state.categorias} 
+          // adicionarCategoria={this.adicionarCategoria.bind(this)}
+          categorias={this.categorias.categorias} 
+          adicionarCategoria={this.categorias.adicionarCategoria}/>
         </main>
         <ListaDeNotas
-          notas={this.state.notas}
-          apagarNota={this.deletarNota.bind(this)} />
+          notas={this.notas.notas}
+          apagarNota={this.notas.apagarNota} />
       </section>
     );
   }
